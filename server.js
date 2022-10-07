@@ -21,6 +21,10 @@ mongoose.connect(MONGO_URI);
 
 app.use("/posts", postRoutes);
 
+app.get("/", (req, res) => {
+  res.send("hellow");
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
