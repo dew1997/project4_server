@@ -2,9 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const postRoutes = require("./routes/posts");
-
+const dotenv = require("dotenv");
 const app = express();
+
+const postRoutes = require("./routes/posts");
+const userRoutes = require("./routes/users");
+dotenv.config();
 
 // middleware
 
@@ -20,10 +23,7 @@ const MONGO_URI =
 mongoose.connect(MONGO_URI);
 
 app.use("/posts", postRoutes);
-
-app.get("/", (req, res) => {
-  res.send("hellow");
-});
+app.use("/users", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
